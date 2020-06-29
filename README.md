@@ -9,7 +9,7 @@ Käytettyjä työkaluja ja lähteitä:
 * [arduboy2 library](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/index.html)
 * [sivuston teema](https://github.com/evanwill/workshop-template-b)
 * [vscode ide](https://code.visualstudio.com/)
-* [platformio vscode plugin](https://platformio.org/)
+* [platformio vscode plugin](https://platformio.org/install/ide?install=vscode)
 
 # TODO:
 
