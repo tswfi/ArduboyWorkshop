@@ -76,12 +76,14 @@ void Ball::boundToViewPort()
         y = r;
     }
 
-    // hitting bottom wall
+    // hitting bottom wall, good for testing :)
+    /*
     if (y + r >= HEIGHT)
     {
         dy = -dy;
         y = HEIGHT - r;
     }
+    */
 }
 
 /**
