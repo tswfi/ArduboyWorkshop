@@ -11,10 +11,25 @@ Käytettyjä työkaluja ja lähteitä:
 * [vscode ide](https://code.visualstudio.com/)
 * [platformio vscode plugin](https://platformio.org/install/ide?install=vscode)
 
+Sivuston lähdekoodi on "docs" repossa ja sitä voi kehittää lokaalisti ajamalla jekylliä omalta koneelta.
+
+* clone the repo
+* install ruby and devtools / build-essential
+* install gems
+```
+bundle install
+```
+* run jekyll
+```
+bundle exec jekyll serve
+```
+
 # TODO:
 
 - [x] pohjat kaikelle
 - [ ] sivuston sisältö
 - [x] hello world esimerkki
+- [ ] pong esimerkin koodaus
+- [ ] pong esimerkin dokumentointi
 - [ ] breakout suunnittelu sisältö
-- [ ] breakout koodaus
+- [x] breakout koodaus
