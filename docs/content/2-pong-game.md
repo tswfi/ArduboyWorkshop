@@ -1,5 +1,5 @@
 ---
-title: Peli
+title: PingPong
 nav: true
 ---
 

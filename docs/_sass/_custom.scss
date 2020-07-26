@@ -253,3 +253,24 @@ a {
 .highlight {
   background-color: #f8f8f8;
 }
+
+code.language-spoiler {
+  display: block;
+  color: black !important;
+  background-color: black !important;
+}
+code.language-spoiler:hover {
+  background-color: inherit !important;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1em;
+}
+table td {
+  border-bottom: 1px solid #eee;
+  padding: 3px 4px;
+}
+table tr:first-child {
+  font-weight: bold;
+}

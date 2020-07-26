@@ -1,6 +1,6 @@
 ---
 title: Hello world
-nav: true
+nav: false
 ---
 
 

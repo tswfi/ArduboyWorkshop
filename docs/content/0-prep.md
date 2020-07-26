@@ -30,9 +30,13 @@ Ensin asennetaan VSCode. Valitse alla olevasta linkistä oma käyttöjärjestelm
 
 Kun vscode on asennettu voidaan käyttää VSCodea asentamaan PlatformIO laajennos. Valitse oikeasta reunasta "extensions" ja kirjoita hakuun PlatformIO ja paina "asenna" nappia.
 
+<center>
+{% include figure.html img="vscode_install_pio.png" alt="" caption="" width="100%" %}
+</center>
+
 Tässä kestää hetken, sillä välin kun järjestelmä asentuu niin otetaan pikaoppia :)
 
-# C++ pika oppi
+# C++ pika oppi arduinolle
 
 Hyvin yksinkertaistettu pikaoppi asioista joita tarvitaan tämän workshopin aikana.
 
@@ -50,11 +54,11 @@ print(x); // tulostaa 15
 
 Muuttujia on eri tyyppisiä:
 
-| tyyppi | kuvaus |
+| tyyppi | kuvaus |
 | int | kokonaisluku |
 | float | desimaaliluku |
 | char | yksi "tavu" |
-| bool | totuusarvo (true tai false) |
+| bool | totuusarvo (true tai false) |
 
 jne.
 
@@ -66,13 +70,13 @@ Normaalit matematiikan operaatiot toimivat myös ohjelmointikielissä.
 
 Seuraavissa esimerkeissä A = 10 ja B = 20
 
-| operaatio | kuvaus | esimerkki |
+| operaatio | kuvaus | esimerkki |
 | + | summa | A+B tulos on 30 |
 | - | vähentäminen | A - B tulos on -10 |
 | * | kertolasku | A * B tulos on 200 |
-| / | jakolasku | A / B tulos on 2 |
-| % | modulo eli jakojäännös | A % B tulos on 0 |
-| ++ | plus yksi | A++ tulos on 11 |
+| / | jakolasku | A / B tulos on 2 |
+| % | modulo eli jakojäännös | A % B tulos on 0 |
+| ++ | plus yksi | A++ tulos on 11 |
 | -- | miinus yksi | A-- tulos on 9 |
 
 Lisäksi koodia voi yksinkertaistaa useissa tapauksissa käyttämällä "asetusoperaatioita"
@@ -91,21 +95,21 @@ x += 10
 
 palautttavat "totuuksia".
 
-| operaatio | kuvaus | esimerkki |
-| == | on yhtäsuurikuin | A == B tulos on false (epätosi) |
-| != | on erisuurikuin | A != B tulos on true |
+| operaatio | kuvaus | esimerkki |
+| == | on yhtäsuurikuin | A == B tulos on false (epätosi) |
+| != | on erisuurikuin | A != B tulos on true |
 | > | on suurempikuin | A > B tulos on false |
-| < | on pienempikuin | A < B tulos on tosi |
+| < | on pienempikuin | A < B tulos on tosi |
 | >= | suurempi tai yhtäsuurikuin | A >= B tulos on false |
-| <= | pienempi tai yhtäsuurikuin | A <= B tulos on true |
+| <= | pienempi tai yhtäsuurikuin | A <= B tulos on true |
 
 ## Loogiset operaatiot
 
 Yhdistävät totuusarvoja. Jos A = true ja B = false
 
 | operaatio | kuvaus | esimerkki |
-| && | Looginen JA. Jos kumpikin on tosi niin tulos on tosi | A && B tulos on false |
-| || | Looginen TAI. Jos jompikumpi on tosi niin tulos on tosi | A || B tulos on true | 
+| && | Looginen JA. Jos kumpikin on tosi niin tulos on tosi | A && B tulos on false |
+| \|\| | Looginen TAI. Jos jompikumpi on tosi niin tulos on tosi | A \|\| B tulos on true |
 | ! | Looginen EI. Kääntää tuloksen toisinpäin | !B tulos on tosi |
 
 ## Ehtolauseke
@@ -188,17 +192,50 @@ Looppi aloittaa x arvolla 0 ja tarkistaa jakojäännöksen ja jos jakojäännös
 
 Mitkä luvut ohjelma tulostaa?
 
-<div class="spoiler">
+```spoiler
 1
 3
 5
-</div>
-
+```
 
 ## Taulukot
 
+Jos muuttujia tarvitaan monia on niistä useasti hyvä muodostaa taulukko (tai lista).
 
+Taulukossa voi olla esimerkiksi tietoa useammasta numero muuttujasta
+
+```
+int numbers[] = {3,5,7};
+for(int i = 0; i < sizeof(numbers); i++) {
+  print(numbers[i]);
+}
+```
+
+# Arduino perusteet
+
+Arduino libraryt tekevät paljon asioita puolestamme. Ne esim määrittelevät kaksi funktiota "setup" ja "loop" joita ajetaan automaattisesti.
+
+```c
+#include <Arduino.h>
+void setup()
+{
+  // this code will be run one time when arduino is started
+}
+
+void loop()
+{
+  // this function will be run again and again and again all the time
+}
+```
+
+Lisäksi tässä workshopissa käytetään Arduboy libraryä joka hoitaa lisäksi näytön, nappien ja kaiuttimen käsittelyn puolestamme helpommin.
 
 # Lisäksi
 
 C++ kielessä on paljon asioita jotka on tässä jätetty käsittelemättä. Muistinkäsittely ja viittaukset ja bitwise operaatiot on jätetty kokonaan pois yksinkertaistamisen vuoksi.
+
+# Seuraavaksi
+
+Hienoa pääsit tänne asti! Nyt sinulla pitäisi olla perustiedot joiden avulla pääsemme tekemään ensimmäistä näkyvää asiaa, perinteinen "Hello World" ohjelma on yksinkertainen ja tarkoitettu siihen että sillä tarkistetaan että laitteistot toimivat ja perusteet ovat kunnossa jotta voidaan lähteä rakentamaan mielenkiintoisempaa.
+
+[Hello World](1-hello-world)
