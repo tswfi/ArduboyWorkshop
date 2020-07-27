@@ -19,10 +19,10 @@ Tässä workshopissa käytetään kuitenkin toisia ohjelmia. Näiden etuna on se
 
 ## VSCode
 
-[VSCode](https://code.visualstudio.com/){:target="_blank"} Yksi parhaista koodi editoreista tällä hetkelllä
-[PlatformIO](https://platformio.org/){:target="_blank"} Alusta monien eri sulautettujen laitteistojen ohjelmointiin.
+[VSCode](https://code.visualstudio.com/){:target="_blank"} on yksi parhaista koodi editoreista tällä hetkelllä.
+[PlatformIO](https://platformio.org/){:target="_blank"} on alusta monien eri sulautettujen laitteistojen ohjelmointiin.
 
-Ensin asennetaan VSCode. Valitse alla olevasta linkistä oma käyttöjärjestelmäsi ja lataa ja asenna paketti:
+Ensin asennetaan VSCode. Valitse alla olevasta linkistä oma käyttöjärjestelmäsi ja lataa ja asenna:
 
 [https://code.visualstudio.com/download](https://code.visualstudio.com/download){:target="_blank"}
 
