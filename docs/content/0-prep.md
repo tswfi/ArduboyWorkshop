@@ -46,7 +46,7 @@ Internetissä on useita [c++ pika ohjeita](https://www.tutorialspoint.com/cplusp
 
 Muuttuja on arvo jota voidaan muuttaa ohjelman aikana. Esim:
 
-```c
+```cpp
 int x = 10;
 x = x + 5;
 print(x); // tulostaa 15
@@ -81,13 +81,13 @@ Seuraavissa esimerkeissä A = 10 ja B = 20
 
 Lisäksi koodia voi yksinkertaistaa useissa tapauksissa käyttämällä "asetusoperaatioita"
 
-```c
+```cpp
 x = x +10
 ```
 
 voidaan kirjoittaa myös
 
-```c
+```cpp
 x += 10
 ```
 
@@ -116,7 +116,7 @@ Yhdistävät totuusarvoja. Jos A = true ja B = false
 
 Ehtolausekkeella voidaan tehdä eri asioita riippuen siitä mikä esim muuttujan arvo on:
 
-```c
+```cpp
 int x = 5;
 if(x > 3) {
     print("x on suurempi kuin viisi");
@@ -127,7 +127,7 @@ if(x > 3) {
 
 Toinen ehtolauseke rakenne on switch rakenne.
 
-```c
+```cpp
 int x = 2;
 switch (x)
 {
@@ -152,7 +152,7 @@ Palauttaa "x on kaksi"
 
 Funktio on pätkä koodia jota voidaan kutsua monta kertaa ja se voi tehdä erilaisia asioita ja palauttaa tietoja seuraavien käsiteltäväksi:
 
-```c
+```cpp
 int add(int a, int b) {
     return a + b;
 }
@@ -167,7 +167,7 @@ Viimeisellä rivillä ensin kutsutaan add funtiota arvoilla 1 ja 2 jolloin ohjel
 
 Loopit ovat todella hyödyllisiä rakenteita joilla voidaan toistaa koodia useita kertoja.
 
-```c
+```cpp
 for(int x = 0; x < 10; x++) {
     print("Lähtölaskenta: ");
     print(x);
@@ -176,7 +176,7 @@ for(int x = 0; x < 10; x++) {
 
 Lisäksi on olemassa myös while loop ja do..while loop. Loopista voi myös poistua kesken kaiken break lausekkeella tai hypätä seuraavalle kierrokselle continue lausekkeella.
 
-```c
+```cpp
 for(int x = 0; x < 10; x++) {
     if(x % 2 == 0) {
         continue;
@@ -204,7 +204,7 @@ Jos muuttujia tarvitaan monia on niistä useasti hyvä muodostaa taulukko (tai l
 
 Taulukossa voi olla esimerkiksi tietoa useammasta numero muuttujasta
 
-```
+```cpp
 int numbers[] = {3,5,7};
 for(int i = 0; i < sizeof(numbers); i++) {
   print(numbers[i]);
@@ -215,7 +215,7 @@ for(int i = 0; i < sizeof(numbers); i++) {
 
 Arduino libraryt tekevät paljon asioita puolestamme. Ne esim määrittelevät kaksi funktiota "setup" ja "loop" joita ajetaan automaattisesti.
 
-```c
+```cpp
 #include <Arduino.h>
 void setup()
 {

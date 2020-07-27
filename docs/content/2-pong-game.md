@@ -31,14 +31,14 @@ lib_deps =
 ```
 
 Ja main.cpp tiedostoon lisätään alkuun
-```
+```cpp
 #include <Arduboy2.h>
 Arduboy2 arduboy;
 ```
 
 Ja muokataan setup functiota alustamaan arduboy ja asetetaan muutama tärkeä optio.
 
-```c
+```cpp
 void setup()
 {
   // start using arduboy library
@@ -54,7 +54,7 @@ void setup()
 
 ja aloitetaan myös loop function kirjoittaminen
 
-```c
+```cpp
 void loop()
 {
   // wait untill next frame
@@ -78,7 +78,7 @@ Pelikenttä koostuu pistelaskureista ja keskiviivasta. Lisäksi kentän ylä ja 
 
 Piirretään tuo keskiviiva ensimmäisenä. Tuo katkoviiva on keskellä ruutua. Lisätään uusi funktio tuon viivan piirtämiselle niin saadan pidettyä koodi vähän paremmin järjestyksessä.
 
-```c
+```cpp
 void draw()
 {
   // spacing for the line
@@ -118,7 +118,7 @@ Palloa varten meidän tarvitsee tietää pallon sijainti jokaisella hetkellä, p
 
 Pallolle tarvitaan siis muutama muuttuja, lisätään ne ensimmäisenä tiedoston yläosaan niin sanotuiksi globaaleiksi muuttujiksi.
 
-```c
+```cpp
 ...
 Arduboy2 arduboy;
 
@@ -143,7 +143,7 @@ lisäksi pallon halkaisija valitaan olemaan 2.
 
 Pallon piirtämistä varten lisätään ```draw``` metodiin pallon piirtämiselle oma kohta pelikentän piirtämisen jälkeen.
 
-```c
+```cpp
   // draw the ball
   arduboy.fillCircle(ballx, bally, ballr);
 ```
@@ -154,7 +154,7 @@ Pallon piirtämistä varten lisätään ```draw``` metodiin pallon piirtämisell
 
 Jotta pelissä olisi jotain ideaa pallo pitää saada liikkumaan. Meillä on jo valmiina olemassa vx ja vy mutta niitä pitää käyttää jotta pallo liikkuu. Lisätään pallon käsittelylle uusi funktio joka hoitaa pallon liikkumista.
 
-```c
+```cpp
 void handleBall()
 {
   // move the ball
@@ -167,7 +167,7 @@ Jokaisella funktion kutsulla lisätään pallon x ja y positioihin vx ja vy arvo
 
 Lisäksi meidän pitää tietysti myös kutsua tätä funktiota, lisätään kutsu loop funktioon.
 
-```c
+```cpp
 ...
   // everything we need to do goes here
   handleBall();
@@ -189,7 +189,7 @@ Joka kerta kun pallon x koordinaatti menee ruudun leveydestä meidän pitää va
 
 Lisätään handleball functioon rajat tälle.
 
-```c
+```cpp
   // keep the ball inside our playfield
   if (
       bally - ballr <= 0         // bounce from the top
@@ -218,7 +218,7 @@ Jotta pelissä olisi jotain ohjattavaa tarvitaan pelaajille mailat. Teemme pelis
 
 Samoin kuin pallolle mailoille tarvitaan myös muutamia muuttujia, lisätään ne taas alkuun.
 
-```c
+```cpp
 // player1 paddle
 int16_t p1width = 3;
 int16_t p1height = 10;
@@ -234,7 +234,7 @@ const int16_t p2x = WIDTH - p2width;
 
 Ja lisätään niille piirto ```draw``` funktioon
 
-```c
+```cpp
   // draw both paddles
   arduboy.fillRect(p1x, p1y, p1width, p1height);
   arduboy.fillRect(p2x, p2y, p2width, p2height);
@@ -242,7 +242,7 @@ Ja lisätään niille piirto ```draw``` funktioon
 
 Lisäksi tarvitaan tapa liikuttaa mailoja. Tämä on hyvä lisätä taas uuteen metodiin jotta koodi pysyy helpompana lukea.
 
-```c
+```cpp
 void handlePaddles()
 {
   // player1 paddle
@@ -283,7 +283,7 @@ Nyt kun ohjelma ladataan arduboylle voi mailoja liikuttaa nuolinäppäimien ylö
 
 ```handleBall``` funktio on sopiva paikka hoitaa mailoihin osumisen käsittely, muutetaan hieman sen koodia. Ensin poistamme kokonaan koodin joka kimmottaa pallon oikeasta ja vasemmasta reunasta ja lisäämme sen tilalle uutta koodia joka tarkistaa että pallo on osunut mailaan.
 
-```c
+```cpp
   // check if we hit either paddle
   // player1 paddle
   if (ballx - ballr == p1x + p1width    // ball is at the paddle surface
@@ -312,7 +312,7 @@ Jos nämä säännöt ovat totta kimmotetaan pallo takaisin päin.
 
 Nyt pallo jatkaisi taas matkaansa sivujen yli ikuisesti joten lisätään vielä tarkistus reunan ylittämiselle ja palautetaan pallo takaisin keskelle jos reuna on ylitetty.
 
-```c
+```cpp
   // if ball is over the left or right side resetball
   // over right side
   if (ballx + ballr < 0)
@@ -328,7 +328,7 @@ Nyt pallo jatkaisi taas matkaansa sivujen yli ikuisesti joten lisätään vielä
 
 mikä ihmeen ```resetBall```? se on taas uusi funktio jonka lisäämme myös
 
-```c
+```cpp
 void resetBall()
 {
   // move the ball to the center of the screen
@@ -359,7 +359,7 @@ Pisteiden lasku ja voiton tarkistaminen ovat peleissä hyvin tärkeitä osia.
 
 Lisätään taas pari muuttujaa koodin yläreunaan joilla voimme pitää kirjaa pisteistä.
 
-```c
+```cpp
 // score
 uint16_t p1score = 0;
 uint16_t p2score = 0;
@@ -369,7 +369,7 @@ const uint16_t maxpoints = 5;
 
 Pisteiden kasvattaminen on helppoa, mehän jo tarkistamme että menikö pallo reunan yli ja jos meni niin kasvatetaan vain oikean pelaajan pisteitä. Eli muokataan handleBall funktion reunan yli tarkastusta hieman
 
-```c
+```cpp
   // if ball is over the left or right side resetball
   // and increase points
   // over right side
@@ -387,7 +387,7 @@ Pisteiden kasvattaminen on helppoa, mehän jo tarkistamme että menikö pallo re
 
 Tietysti pistetilanne olisi hyvä näyttää jossain. Lisätään draw funktioon pisteiden näyttäminen:
 
-```c
+```cpp
   // print both scores
   // textsize 2 is 12x16 px
   arduboy.setTextSize(2);
@@ -403,7 +403,7 @@ Tietysti pistetilanne olisi hyvä näyttää jossain. Lisätään draw funktioon
 
 Ja meidän pitää myös tarkistaa voitto tilanne. Lisätään tälle tarkistus pää looppiimme.
 
-```c
+```cpp
   // check if either side won
   if (p1score >= maxpoints || p2score >= maxpoints)
   {
@@ -430,7 +430,7 @@ Pelillämme on kolme eri tilaa. Aloitusruutu, Peli tilanne ja Voittoruutu.
 
 Lisätään vähän apumuuttujia tämän tilan käsittelyyn.
 
-```c
+```cpp
 // gamestate
 const int GAME_TITLE = 0;
 const int GAME_PLAY = 1;
@@ -442,7 +442,7 @@ Kuvan mukaisesti aloitetaan tilanne siitä että olemme title screenissä jossa 
 
 Muutetaan myös looppiamme ottamaan huomioon nämä tilat.
 
-```c
+```cpp
   // clear the screen
   arduboy.clear();
 
@@ -491,7 +491,7 @@ Voitto tilassa kutsutaan ```winScreen``` funktiota (jonka toteutamme ihan kohta)
 
 Lisätään uusi funktio hoitamaan titleScreenin tehtäviä.
 
-```c
+```cpp
 void titleScreen()
 {
   arduboy.pollButtons();
@@ -511,7 +511,7 @@ Yksinkertaisesti vain odotetaan että jotain peli napeista painetaan jonka jälk
 
 Samoin lisätään voitto tilanteelle oma funktio hoitamaan sen tehtäviä.
 
-```c
+```cpp
 void winScreen()
 {
   // textsize 2 is 12x16 px
@@ -567,7 +567,7 @@ lib_deps =
 
 Ja main.cpp tiedostoon lisätään
 
-```c
+```cpp
 ...
 Arduboy2 arduboy;
 ArduboyTones sound(arduboy.audio.enabled);
@@ -578,7 +578,7 @@ Tämän jälkeen voidaan kutsua [sound]() funktiota äänien tuottamiseksi.
 
 Lisätään maila osuman tarkistukseen
 
-```c
+```cpp
 sound.tone(NOTE_A4, 50);
 ```
 

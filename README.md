@@ -27,9 +27,9 @@ bundle exec jekyll serve
 # TODO:
 
 - [x] pohjat kaikelle
-- [ ] sivuston sisältö
+- [x] sivuston sisältö
 - [x] hello world esimerkki
-- [ ] pong esimerkin koodaus
-- [ ] pong esimerkin dokumentointi
-- [ ] breakout suunnittelu sisältö
+- [x] pong esimerkin koodaus
+- [x] pong esimerkin dokumentointi
 - [x] breakout koodaus
+- [ ] breakout dokumentointi

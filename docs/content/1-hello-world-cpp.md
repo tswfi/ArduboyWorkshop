@@ -3,8 +3,6 @@ title: Hello world
 nav: false
 ---
 
-
-
 # Hello World main.cpp
 
 ```cpp

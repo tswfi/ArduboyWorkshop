@@ -64,7 +64,7 @@ lib_deps =
 ```
 Tämän jälkeen muutetaan hieman main.cpp tiedostoa
 
-```c
+```cpp
 #include <Arduino.h>
 #include <Arduboy2.h>
 
