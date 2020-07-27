@@ -1,5 +1,5 @@
 ---
-title: PingPong
+title: Pong
 nav: true
 ---
 
@@ -102,9 +102,9 @@ void loop() {
 }
 ```
 
-```draw``` functiossa ensimmäisenä määritellään apumuuttuja ```spacing``` jota käytetään loopissa jotta saadaan helposti piirrettyä katkoviiva. Apumuuttujaa käytetään for loopissa joka alkaa 0:sta ja jatkuu aina ```HEIGHT```muuttujaan asti [HEIGHT](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/Arduboy2Core_8h.html#aed89bd71aee8be823e8a20ec4e093c1e) on arduboy libraryn määrittämä tieto joka kertoo näytön korkeuden. Tuo HEIGHT tieto käytännössä muuttuu arvoksi 64 kun ohjelma käännetään. Jotta saadaan aikaseksi katkoviiva niin tuota loopin i arvoa ei kasvatetakkaan aina yhdellä vaan kasvatetaan sitä tuolla määritetyllä spacing arvolla.
+`draw` functiossa ensimmäisenä määritellään apumuuttuja `spacing` jota käytetään loopissa jotta saadaan helposti piirrettyä katkoviiva. Apumuuttujaa käytetään for loopissa joka alkaa 0:sta ja jatkuu aina `HEIGHT`muuttujaan asti [HEIGHT](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/Arduboy2Core_8h.html#aed89bd71aee8be823e8a20ec4e093c1e) on arduboy libraryn määrittämä tieto joka kertoo näytön korkeuden. Tuo HEIGHT tieto käytännössä muuttuu arvoksi 64 kun ohjelma käännetään. Jotta saadaan aikaseksi katkoviiva niin tuota loopin i arvoa ei kasvatetakkaan aina yhdellä vaan kasvatetaan sitä tuolla määritetyllä spacing arvolla.
 
-Loopin sisällä käytetään arduboyn [drawline](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/classArduboy2Base.html#a79d9d17254856098f4a38726e64b53ba) funktiota jolle kerrotaan viivan alkupiste ja loppupiste. Alkupisteen X koordinaatti lasketaan ```WIDTH / 2 => 128/2 => 64```ja y koordinaatti on loopin i arvo, eli ensimmäisellä kierroksella i=0 toisella i=6 kolmannella i=12 jne kunnes i on suurempi kuin HEIGHT. Loppupisteen x koordinaatti on sama kuin alkupisteen mutta y koordinaatti on spacing arvo jaettuna kahdella.
+Loopin sisällä käytetään arduboyn [drawline](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/classArduboy2Base.html#a79d9d17254856098f4a38726e64b53ba) funktiota jolle kerrotaan viivan alkupiste ja loppupiste. Alkupisteen X koordinaatti lasketaan `WIDTH / 2 => 128/2 => 64` ja y koordinaatti on loopin i arvo, eli ensimmäisellä kierroksella i=0 toisella i=6 kolmannella i=12 jne kunnes i on suurempi kuin HEIGHT. Loppupisteen x koordinaatti on sama kuin alkupisteen mutta y koordinaatti on spacing arvo jaettuna kahdella.
 
 Eli loopin sisällä piirretään useita viivoja joista ensimmäinen lähtee koordinaateista 64, 0 ja päättyy 64, 3 seuraava kulkee 64, 6 => 64, 9 jne kunnes koko ruudun korkeus on täytetty.
 
@@ -141,7 +141,7 @@ lisäksi pallon halkaisija valitaan olemaan 2.
 
 ## Pallon piirtäminen
 
-Pallon piirtämistä varten lisätään ```draw``` metodiin pallon piirtämiselle oma kohta pelikentän piirtämisen jälkeen.
+Pallon piirtämistä varten lisätään `draw` metodiin pallon piirtämiselle oma kohta pelikentän piirtämisen jälkeen.
 
 ```cpp
   // draw the ball
@@ -232,13 +232,15 @@ int16_t p2y = HEIGHT / 2 - p2height / 2;
 const int16_t p2x = WIDTH - p2width;
 ```
 
-Ja lisätään niille piirto ```draw``` funktioon
+Ja lisätään niille piirto `draw` funktioon
 
 ```cpp
   // draw both paddles
   arduboy.fillRect(p1x, p1y, p1width, p1height);
   arduboy.fillRect(p2x, p2y, p2width, p2height);
 ```
+
+[fillRect](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/classArduboy2Base.html#a69f8864af3b6fd9179a021da8ff0dc90) piirtää neliön x,y ja x2, y2 koordinaattien väliin.
 
 Lisäksi tarvitaan tapa liikuttaa mailoja. Tämä on hyvä lisätä taas uuteen metodiin jotta koodi pysyy helpompana lukea.
 
@@ -279,9 +281,11 @@ void handlePaddles()
 }
 ```
 
+[Pressed](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/classArduboy2Base.html#a1a294744f7886588b6864f1df75a91ba) funktio tarkistaa onko nappi pohjassa.
+
 Nyt kun ohjelma ladataan arduboylle voi mailoja liikuttaa nuolinäppäimien ylös alas ja a b näppäimien avulla. Palloon nämä eivät vaikuta vielä mitenkään lisätään seuraavaksi käsittely sille.
 
-```handleBall``` funktio on sopiva paikka hoitaa mailoihin osumisen käsittely, muutetaan hieman sen koodia. Ensin poistamme kokonaan koodin joka kimmottaa pallon oikeasta ja vasemmasta reunasta ja lisäämme sen tilalle uutta koodia joka tarkistaa että pallo on osunut mailaan.
+`handleBall` funktio on sopiva paikka hoitaa mailoihin osumisen käsittely, muutetaan hieman sen koodia. Ensin poistamme kokonaan koodin joka kimmottaa pallon oikeasta ja vasemmasta reunasta ja lisäämme sen tilalle uutta koodia joka tarkistaa että pallo on osunut mailaan.
 
 ```cpp
   // check if we hit either paddle
@@ -326,7 +330,7 @@ Nyt pallo jatkaisi taas matkaansa sivujen yli ikuisesti joten lisätään vielä
   }
 ```
 
-mikä ihmeen ```resetBall```? se on taas uusi funktio jonka lisäämme myös
+mikä ihmeen `resetBall`? se on taas uusi funktio jonka lisäämme myös
 
 ```cpp
 void resetBall()
@@ -347,7 +351,7 @@ void resetBall()
 }
 ```
 
-```resetBall``` palauttaa pallon takaisin keskelle ja jotta peli olisi edes jotenkin mielenkiintoinen vaihdetaan pallon suuntaa randomilla. Arduinon random funktio palauttaa arvotun luvun minimi ja maksimi arvojen välistä (poislukien maksimi) eli random(0,2) palauttaa joko 0 tai 1 ja jos se palauttaa yksi vaihdetaan suuntaa.
+`resetBall` palauttaa pallon takaisin keskelle ja jotta peli olisi edes jotenkin mielenkiintoinen vaihdetaan pallon suuntaa randomilla. Arduinon random funktio palauttaa arvotun luvun minimi ja maksimi arvojen välistä (poislukien maksimi) eli random(0,2) palauttaa joko 0 tai 1 ja jos se palauttaa yksi vaihdetaan suuntaa.
 
 Nyt kun ohjelman lataa arduboylle niin sillä voi jo pelata. Palloa voi pomputtaa mailojen välissä ja pallo palautuu keskelle kun se menee yli.
 
@@ -479,13 +483,13 @@ Muutetaan myös looppiamme ottamaan huomioon nämä tilat.
 
 Tässä tulikin paljon muutoksia mutta ei hätää käydään homma läpi rivi riviltä.
 
-clear kutsun jälkeen kutsumme yhä ```draw``` funktiotamme jotta saamme aina piirrettyä pelikentän ja pistelaskurit jne.
+clear kutsun jälkeen kutsumme yhä `draw` funktiotamme jotta saamme aina piirrettyä pelikentän ja pistelaskurit jne.
 
-Switch lausekkeella tutkimme mikä pelin tila on ja jos olemme title ruudussa kutsutaan uutta funktiota ```titleScreen``` (jonka teemme kohta).
+Switch lausekkeella tutkimme mikä pelin tila on ja jos olemme title ruudussa kutsutaan uutta funktiota `titleScreen` (jonka teemme kohta).
 
 Jos olemme peli tilanteessa kutsumme taas normaalisti handle toimintojamme kunnes jompikumpi pelaajista nousee pisteissä yli maksimin jolloin siirrymme voitto tilaan.
 
-Voitto tilassa kutsutaan ```winScreen``` funktiota (jonka toteutamme ihan kohta).
+Voitto tilassa kutsutaan `winScreen` funktiota (jonka toteutamme ihan kohta).
 
 ## titleScreen
 
@@ -494,10 +498,9 @@ Lisätään uusi funktio hoitamaan titleScreenin tehtäviä.
 ```cpp
 void titleScreen()
 {
-  arduboy.pollButtons();
   if (
-      arduboy.justPressed(UP_BUTTON) || arduboy.justPressed(DOWN_BUTTON) || arduboy.justPressed(A_BUTTON) ||
-      arduboy.justPressed(B_BUTTON))
+      arduboy.pressed(UP_BUTTON) || arduboy.pressed(DOWN_BUTTON) || arduboy.pressed(A_BUTTON) ||
+      arduboy.pressed(B_BUTTON))
   {
     resetBall();
     gamestate = GAME_PLAY;
@@ -505,7 +508,7 @@ void titleScreen()
 }
 ```
 
-Yksinkertaisesti vain odotetaan että jotain peli napeista painetaan jonka jälkeen voidaan aloittaa uusi peli. Kutsutaan myös ```resetBall``` jotta saadaan randomoitua pallon suunta heti alusta.
+Yksinkertaisesti vain odotetaan että jotain peli napeista painetaan jonka jälkeen voidaan aloittaa uusi peli. Kutsutaan myös `resetBall` jotta saadaan randomoitua pallon suunta heti alusta.
 
 ## winScreen
 
@@ -534,7 +537,6 @@ void winScreen()
   // and sleep for a moment so that there is time to react and not start a new game immediately
   delay(500);
 
-  arduboy.pollButtons();
   if (
       arduboy.pressed(UP_BUTTON) || arduboy.pressed(DOWN_BUTTON) || arduboy.pressed(A_BUTTON) ||
       arduboy.pressed(B_BUTTON))
@@ -558,7 +560,7 @@ Koska arduboyssa on myös pieni kaiutin niin lisätään vielä ääniefekti
 
 Äänet on jaettu omaan libraryynsä joten meidän pitää ensin lisätä se tarvittuihin libraryihin ja alustaa ääni samaan tyyliin kuin arduboy library.
 
-platformio.ini tiedostoon lisätään lib_deps kohtaan ```ArduboyTones```
+platformio.ini tiedostoon lisätään lib_deps kohtaan `ArduboyTones`
 ```ini
 lib_deps =
   Arduboy2
@@ -574,7 +576,7 @@ ArduboyTones sound(arduboy.audio.enabled);
 ...
 ```
 
-Tämän jälkeen voidaan kutsua [sound]() funktiota äänien tuottamiseksi.
+Tämän jälkeen voidaan kutsua [sound](https://github.com/MLXXXp/ArduboyTones){:target="_blank"} funktiota äänien tuottamiseksi.
 
 Lisätään maila osuman tarkistukseen
 
