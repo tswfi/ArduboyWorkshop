@@ -17,16 +17,17 @@ Arduboyta kuten muitakin Arduino pohjaisia laitteistoja voi koodata monilla erit
 
 Tässä workshopissa käytetään kuitenkin toisia ohjelmia. Näiden etuna on se että ne toimivat myös muiden kielien ja järjestelmien kanssa jatkossa.
 
-## VSCode
-
 [VSCode](https://code.visualstudio.com/){:target="_blank"} on yksi parhaista koodi editoreista tällä hetkelllä.
+
 [PlatformIO](https://platformio.org/){:target="_blank"} on alusta monien eri sulautettujen laitteistojen ohjelmointiin.
+
+## VSCode asennus
 
 Ensin asennetaan VSCode. Valitse alla olevasta linkistä oma käyttöjärjestelmäsi ja lataa ja asenna:
 
 [https://code.visualstudio.com/download](https://code.visualstudio.com/download){:target="_blank"}
 
-## PlatformIO
+## PlatformIO asennus
 
 Kun vscode on asennettu voidaan käyttää VSCodea asentamaan PlatformIO laajennos. Valitse oikeasta reunasta "extensions" ja kirjoita hakuun PlatformIO ja paina "asenna" nappia.
 
