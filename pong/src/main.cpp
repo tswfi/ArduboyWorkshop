@@ -17,15 +17,14 @@ const int GAME_PLAY = 1;
 const int GAME_WON = 2;
 uint8_t gamestate = GAME_TITLE;
 
-// ball radius
-const int8_t ballr = 2;
-
 // ball initial position center of the screen
 int16_t ballx = WIDTH / 2;
 int16_t bally = HEIGHT / 2;
 // ball velocity in x and y direction
 int8_t vx = 1;
 int8_t vy = 1;
+// ball radius
+const int8_t ballr = 2;
 
 // player1 paddle
 int16_t p1width = 3;
@@ -95,12 +94,14 @@ void setup()
  */
 void drawPlayField()
 {
-  uint16_t spacing = 6; // half of this will be white half will be black
+  // spacing for the line
+  // half will be white half black
+  uint16_t spacing = 6;
   for (int i = 0; i < HEIGHT; i += spacing)
   {
     arduboy.drawLine(
-        WIDTH / 2, i, WIDTH / 2, // start coordinate
-        i + spacing / 2          // end coordinate
+        WIDTH / 2, i,              // start coordinate
+        WIDTH / 2, i + spacing / 2 // end coordinate
     );
   }
 
