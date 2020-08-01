@@ -54,6 +54,8 @@ Projektin kansio rakenteessa on paljon valmista:
 
 # Arduboy libraryn lisääminen
 
+[Arduboy libraryn dokumentaatio](https://mlxxxp.github.io/documents/Arduino/libraries/Arduboy2/Doxygen/html/classArduboy2.html)
+
 Koska laitteistomme on arduboy emmekä halua tehdä ylimääräistä työtä näytön ohjelmointia varten otamme aivan ensimmäisenä käyttöön arduboy libraryn tätä varten.
 
 Muutetaan platformio.ini tiedostoa niin että kerrotaan että haluamme arduboy2 nimisen libraryn mukaan ohjelmaamme. Lisätään tiedoston loppuun nämä rivit:
