@@ -137,7 +137,7 @@ ballx ja bally kertovat pallon sijainnin ruudulla, alustetaan pallo olemaan kesk
 
 vx ja vy kertovat pallon suunnan, alustetaan ne olemaan 1 ja 1 joka tarkoittaa sitä että pallo olisi liikkeessä oikealle ja alas.
 
-lisäksi pallon halkaisija valitaan olemaan 2.
+lisäksi pallon säde valitaan olemaan 2 jolloin halkaisija on 4.
 
 ## Pallon piirtäminen
 
@@ -589,4 +589,3 @@ sound.tone(NOTE_A4, 50);
 Hienoa pääsit tänne asti! Toivottavasti opit jotain ja pääset nyt aloittamaan vaikka oman pelin kirjoittamisen. Hyviä pelejä joita ekana kokeilla ovat breakout ja side scroller tyyppiset pelit.
 
 Täältä voit vielä lukea koko [pong lähdekoodin](2.1-pong-source).
-
